@@ -1,65 +1,293 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/resources/features/SauceDemoLoginWithDataTable.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/resources/features/Login.feature");
 formatter.feature({
-  "name": "Sace Demo login",
+  "name": "Login",
   "description": "",
-  "keyword": "Feature"
+  "keyword": "Feature",
+  "tags": [
+    {
+      "name": "@sprint5"
+    },
+    {
+      "name": "@login"
+    }
+  ]
+});
+formatter.scenarioOutline({
+  "name": "Error message validation while invalid login",
+  "description": "",
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "name": "@reporting"
+    }
+  ]
+});
+formatter.step({
+  "name": "user enter \"\u003cUsername\u003e\" and \"\u003cPassword\u003e\"",
+  "keyword": "When "
+});
+formatter.step({
+  "name": "user click on login button",
+  "keyword": "And "
+});
+formatter.step({
+  "name": "user see \"\u003cErrorMessage\u003e\"",
+  "keyword": "Then "
+});
+formatter.examples({
+  "name": "",
+  "description": "",
+  "keyword": "Examples",
+  "rows": [
+    {
+      "cells": [
+        "Username",
+        "Password",
+        "ErrorMessage"
+      ]
+    },
+    {
+      "cells": [
+        "Admin",
+        "Admin123",
+        "Invalid Credentials"
+      ]
+    },
+    {
+      "cells": [
+        "Hello",
+        "Syntax123!",
+        "Invalid Credentials"
+      ]
+    },
+    {
+      "cells": [
+        "Admin",
+        "",
+        "Password cannot be empty"
+      ]
+    },
+    {
+      "cells": [
+        "",
+        "Syntax123!",
+        "Username cannot be empty"
+      ]
+    }
+  ]
 });
 formatter.scenario({
-  "name": "invalid login",
+  "name": "Error message validation while invalid login",
   "description": "",
-  "keyword": "Scenario"
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "name": "@sprint5"
+    },
+    {
+      "name": "@login"
+    },
+    {
+      "name": "@reporting"
+    }
+  ]
 });
 formatter.before({
   "status": "passed"
 });
 formatter.step({
-  "name": "user enter invalid username as below",
-  "rows": [
-    {},
-    {},
-    {}
-  ],
+  "name": "user enter \"Admin\" and \"Admin123\"",
   "keyword": "When "
 });
 formatter.match({
-  "location": "com.hrms.steps.SauceDemoLoginSteps.user_enter_invalid_username_as_below(io.cucumber.datatable.DataTable)"
+  "location": "com.hrms.steps.LoginSteps.user_enter_valid_and(java.lang.String,java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user enter invalid password",
+  "name": "user click on login button",
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.hrms.steps.SauceDemoLoginSteps.user_enter_invalid_password()"
+  "location": "com.hrms.steps.LoginSteps.user_click_on_login_button()"
 });
 formatter.result({
-  "error_message": "org.openqa.selenium.NoSuchElementException: Cannot locate an element using id\u003dpassword\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Syntaxs-MacBook-Pro.local\u0027, ip: \u0027fe80:0:0:0:b9:cec2:42f:115%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.15.2\u0027, java.version: \u00271.8.0_241\u0027\nDriver info: driver.version: RemoteWebDriver\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:327)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)\n\tat org.openqa.selenium.By$ById.findElement(By.java:188)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\n\tat com.sun.proxy.$Proxy17.clear(Unknown Source)\n\tat com.hrms.utils.CommonMethods.sendText(CommonMethods.java:33)\n\tat com.hrms.steps.SauceDemoLoginSteps.user_enter_invalid_password(SauceDemoLoginSteps.java:31)\n\tat ✽.user enter invalid password(file:///Users/syntax/eclipse-workspace/Batch6/Hrms/src/test/resources/features/SauceDemoLoginWithDataTable.feature:12)\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.step({
-  "name": "click on login button",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.steps.SauceDemoLoginSteps.click_on_login_button()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "user should see the error message",
+  "name": "user see \"Invalid Credentials\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.hrms.steps.SauceDemoLoginSteps.user_should_see_the_error_message()"
+  "location": "com.hrms.steps.LoginSteps.user_see(java.lang.String)"
 });
 formatter.result({
-  "status": "skipped"
-});
-formatter.after({
-  "error_message": "org.openqa.selenium.NoSuchWindowException: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome\u003d83.0.4103.97)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Syntaxs-MacBook-Pro.local\u0027, ip: \u0027fe80:0:0:0:b9:cec2:42f:115%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.15.2\u0027, java.version: \u00271.8.0_241\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.97, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: /var/folders/0d/263tkdf562g...}, goog:chromeOptions: {debuggerAddress: localhost:55117}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}\nSession ID: 9fe10022516865abf9847b4c6c1793a9\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)\n\tat org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)\n\tat com.hrms.utils.CommonMethods.takeScreenshot(CommonMethods.java:259)\n\tat com.hrms.steps.Hooks.end(Hooks.java:22)\n",
+  "error_message": "org.junit.ComparisonFailure: Not correct error message is displayed expected:\u003cInvalid [C]redentials\u003e but was:\u003cInvalid [c]redentials\u003e\n\tat org.junit.Assert.assertEquals(Assert.java:117)\n\tat com.hrms.steps.LoginSteps.user_see(LoginSteps.java:76)\n\tat ✽.user see \"Invalid Credentials\"(file:///Users/lordn/eclipse-workspace/CucumberHRMS_Batch7/src/test/resources/features/Login.feature:20)\n",
   "status": "failed"
+});
+formatter.embedding("image/png", "embedded0.png", "Error message validation while invalid login");
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Error message validation while invalid login",
+  "description": "",
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "name": "@sprint5"
+    },
+    {
+      "name": "@login"
+    },
+    {
+      "name": "@reporting"
+    }
+  ]
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user enter \"Hello\" and \"Syntax123!\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.steps.LoginSteps.user_enter_valid_and(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user click on login button",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.steps.LoginSteps.user_click_on_login_button()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user see \"Invalid Credentials\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "com.hrms.steps.LoginSteps.user_see(java.lang.String)"
+});
+formatter.result({
+  "error_message": "org.junit.ComparisonFailure: Not correct error message is displayed expected:\u003cInvalid [C]redentials\u003e but was:\u003cInvalid [c]redentials\u003e\n\tat org.junit.Assert.assertEquals(Assert.java:117)\n\tat com.hrms.steps.LoginSteps.user_see(LoginSteps.java:76)\n\tat ✽.user see \"Invalid Credentials\"(file:///Users/lordn/eclipse-workspace/CucumberHRMS_Batch7/src/test/resources/features/Login.feature:20)\n",
+  "status": "failed"
+});
+formatter.embedding("image/png", "embedded1.png", "Error message validation while invalid login");
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Error message validation while invalid login",
+  "description": "",
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "name": "@sprint5"
+    },
+    {
+      "name": "@login"
+    },
+    {
+      "name": "@reporting"
+    }
+  ]
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user enter \"Admin\" and \"\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.steps.LoginSteps.user_enter_valid_and(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user click on login button",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.steps.LoginSteps.user_click_on_login_button()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user see \"Password cannot be empty\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "com.hrms.steps.LoginSteps.user_see(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.embedding("image/png", "embedded2.png", "Error message validation while invalid login");
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Error message validation while invalid login",
+  "description": "",
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "name": "@sprint5"
+    },
+    {
+      "name": "@login"
+    },
+    {
+      "name": "@reporting"
+    }
+  ]
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user enter \"\" and \"Syntax123!\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.steps.LoginSteps.user_enter_valid_and(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user click on login button",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.steps.LoginSteps.user_click_on_login_button()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user see \"Username cannot be empty\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "com.hrms.steps.LoginSteps.user_see(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.embedding("image/png", "embedded3.png", "Error message validation while invalid login");
+formatter.after({
+  "status": "passed"
 });
 });

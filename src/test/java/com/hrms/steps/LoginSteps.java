@@ -35,7 +35,7 @@ public class LoginSteps extends CommonMethods {
 
 	@Then("admin user is successfully logged in")
 	public void admin_user_is_successfully_logged_in() {
-		String expected = "Welcome Admin";
+		String expected = "Welcome Adm in";
 		String actual = dashboard.welcome.getText();
 		Assert.assertEquals("Welcome message is not displayed or not correct ", expected, actual);
 		System.out.println(actual);

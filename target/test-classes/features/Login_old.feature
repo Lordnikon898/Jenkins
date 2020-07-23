@@ -1,6 +1,7 @@
 Feature: Login OLD
 
   #previously written test
+  @loll
   Scenario: valid admin login
     When user enter valid admin username and password
     And user click on login button

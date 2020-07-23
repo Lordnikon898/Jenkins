@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.hrms.utils.ConfigsReader;
@@ -25,7 +26,9 @@ public class BaseClass {
 
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
+			driver = new ChromeDriver(options);
 			break;
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
